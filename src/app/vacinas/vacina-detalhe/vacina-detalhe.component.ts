@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Pais } from '../../shared/model/pais';
 import { Pessoa } from '../../shared/model/pessoa';
 import { Vacina } from '../../shared/model/vacina';
-import { VacinasService } from '../../shared/service/vacinas.service';
-import { PesquisadorService } from '../../shared/service/pessoa.service';
 import { PaisService } from '../../shared/service/pais.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { PesquisadorService } from '../../shared/service/pessoa.service';
+import { VacinasService } from '../../shared/service/vacinas.service';
 
 @Component({
   selector: 'app-vacina-detalhe',
@@ -113,7 +113,7 @@ export class VacinaDetalheComponent implements OnInit{
   }
 
   public voltar() {
-    this.router.navigate(['/'])
+    this.router.navigate(['/vacinas'])
   }
 
 
