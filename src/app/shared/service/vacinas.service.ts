@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Vacina } from '../model/vacina';
 import { VacinaSeletor } from '../model/seletor/vacina-seletor';
+import { Vacina } from '../model/vacina';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VacinasService {
 
-  
+
   private readonly API = 'http://localhost:8080/estudo-de-caso-2/rest/vacina';
 
   constructor(private httpClient: HttpClient) { }
@@ -32,7 +32,7 @@ export class VacinasService {
   }
 
   public excluir(id: number):Observable<boolean> {
-    return this.httpClient.delete<boolean>(this.API + "/" + id);
+    return this.httpClient.delete<boolean>(this.API + '/excluir/' + id);
   }
 
   public atualizar(vacina: Vacina):Observable<any> {
