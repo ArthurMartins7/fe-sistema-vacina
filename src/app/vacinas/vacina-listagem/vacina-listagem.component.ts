@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Vacina } from '../../shared/model/vacina';
-import { VacinasService } from '../../shared/service/vacinas.service';
-import { VacinaSeletor } from '../../shared/model/seletor/vacina-seletor';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Pais } from '../../shared/model/pais';
 import { Pessoa } from '../../shared/model/pessoa';
+import { VacinaSeletor } from '../../shared/model/seletor/vacina-seletor';
+import { Vacina } from '../../shared/model/vacina';
 import { PaisService } from '../../shared/service/pais.service';
 import { PesquisadorService } from '../../shared/service/pessoa.service';
-import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { VacinasService } from '../../shared/service/vacinas.service';
 
 
 @Component({
@@ -119,6 +119,7 @@ public excluir(vacinaSelecionada: Vacina) {
       this.vacinaService.excluir(vacinaSelecionada.id).subscribe(
         (resultado) => {
           this.pesquisar();
+          Swal.fire('Sucesso!', 'Vacina excluida com sucesso! ', 'success');
         },
         (erro) => {
           Swal.fire('Erro!', 'Erro ao excluir vacina: ' + erro.error.mensagem, 'error');
