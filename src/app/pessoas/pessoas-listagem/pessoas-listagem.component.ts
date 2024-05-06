@@ -1,23 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Pessoa } from '../../shared/model/pessoa';
 import { PesquisadorService } from '../../shared/service/pessoa.service';
+import { Pais } from '../../shared/model/pais';
+import { PaisService } from '../../shared/service/pais.service';
 
 @Component({
   selector: 'app-pessoas-listagem',
  // standalone: true,
-  //imports: [],
+ // imports: [],
   templateUrl: './pessoas-listagem.component.html',
   styleUrl: './pessoas-listagem.component.scss'
 })
-export class PessoasListagemComponent implements OnInit {
+export class PessoasListagemComponent implements OnInit{
+
 
   public pessoas: Array<Pessoa> = new Array();
+  public paises: Array<Pais> = new Array();
 
-  constructor(private pessoaService: PesquisadorService){}
+
+  constructor(private pessoaService: PesquisadorService,
+    private paisService: PaisService){}
 
   ngOnInit(): void {
+    this.consultarTodosPaises();
     this.consultarTodasAsPessoas();
 
+  }
+
+  consultarTodosPaises(){
+    this.paisService.consultarTodosPaises().subscribe(
+      resultado => {
+        this.paises = resultado;
+      },
+      erro => {
+        console.error('Erro ao consultar todos os paises', erro);
+      }
+    )
   }
 
   private consultarTodasAsPessoas() {
@@ -31,5 +49,14 @@ export class PessoasListagemComponent implements OnInit {
       }
 
     )};
+
+    pesquisar(){
+
+
+    }
+
+    limpar() {
+      throw new Error('Method not implemented.');
+      }
 
 }
