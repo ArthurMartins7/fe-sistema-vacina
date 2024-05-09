@@ -28,7 +28,7 @@ export class AplicacaoService {
     return this.httpClient.get<Aplicacao>(this.API + '/' + id);
   }
 
-  consultarTodasAplicacoes(vacinacao: Aplicacao):Observable<Array<Aplicacao>>{
+  consultarTodasAplicacoes():Observable<Array<Aplicacao>>{
     return this.httpClient.get<Array<Aplicacao>>(this.API + '/todas')
   }
 
