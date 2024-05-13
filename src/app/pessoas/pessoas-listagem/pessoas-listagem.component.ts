@@ -1,8 +1,11 @@
+import { PessoasDetalheComponent } from './../pessoas-detalhe/pessoas-detalhe.component';
 import { Component, OnInit } from '@angular/core';
 import { Pessoa } from '../../shared/model/pessoa';
 import { PesquisadorService } from '../../shared/service/pessoa.service';
 import { Pais } from '../../shared/model/pais';
 import { PaisService } from '../../shared/service/pais.service';
+import { PessoaSeletor } from '../../shared/model/seletor/pessoa-seletor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoas-listagem',
@@ -16,10 +19,10 @@ export class PessoasListagemComponent implements OnInit{
 
   public pessoas: Array<Pessoa> = new Array();
   public paises: Array<Pais> = new Array();
-
+  public seletor: PessoaSeletor =  new PessoaSeletor();
 
   constructor(private pessoaService: PesquisadorService,
-    private paisService: PaisService){}
+    private paisService: PaisService, private router: Router){}
 
   ngOnInit(): void {
     this.consultarTodosPaises();
@@ -51,12 +54,26 @@ export class PessoasListagemComponent implements OnInit{
     )};
 
     pesquisar(){
-
+      this.pessoaService.consultarComSeletor(this.seletor).subscribe(
+        resultado => {
+          this.pessoas = resultado;
+        },
+        erro => {
+          console.error('Erro ao consultar pessoas com seletor', erro)
+        }
+      )
 
     }
 
     limpar() {
-      throw new Error('Method not implemented.');
+      this.seletor = new PessoaSeletor();
       }
+
+      public editar(idPessoa: number) {
+        this.router.navigate(['/pessoas/detalhes/', idPessoa])
+
+      }
+
+
 
 }

@@ -15,8 +15,9 @@
                         <label for="nomePesquisador">Nome do pesquisador:</label>
                         <select class="form-control" name="nomePesquisador" [(ngModel)]="vacina.pesquisador" required>
                             @for (pessoa of pesquisadores; track pessoa.idPessoa) {
-                            <option [ngValue]="pessoa">{{ pessoa.nome }}</option>
+                            <option [ngValue]="pessoa">{{ pessoa.nome }} </option>
                             }
+
                         </select>
                     </div>
                     <div class="form-group col-md-3">

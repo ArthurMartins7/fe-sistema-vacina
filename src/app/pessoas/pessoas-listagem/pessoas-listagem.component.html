@@ -8,16 +8,16 @@
         <div class="row g-3">
           <div class="col-md-4">
             <label for="text">Nome da pessoa:</label>
-            <input type="text" class="form-control text-center" required>
+            <input type="text" id="nomePessoa" class="form-control" name="nomePessoa" [(ngModel)]="seletor.nomePessoa">
           </div>
           <div class="col-md-4">
             <label for="text">CPF:</label>
-            <input type="text" class="form-control text-center" required>
+          <input type="text"id="cpf" class="form-control" name="cpf" [(ngModel)]="seletor.cpf">
           </div>
           <div class="col-md-4">
             <label for="text">País de origem:</label>
             <select
-            class="form-control text-center"
+            class="form-control" name="pais" [(ngModel)]="seletor.nomePais"
             name="nomePais"
           >
             @for (pais of paises; track pais.id) {
@@ -28,7 +28,7 @@
           </div>
           <div class="col-md-2">
             <label for="date">Data nascimento:</label>
-            <input  type="date" class="form-control text-center" required >
+            <input  type="date" id="dtnasc" class="form-control" name="dtnasc" [(ngModel)]="seletor.dataNascimento">
           </div>
         </div>
         <div class="row" >
@@ -58,7 +58,7 @@
           <th>Nome</th>
           <th>Sexo</th>
           <th>CPF</th>
-          <th>tipo de Cadastrada</th>
+          <th>Tipo de Pessoa</th>
           <th>Data Nascimento</th>
           <th>País origem:</th>
           <!-- <th >Média</th> -->
@@ -75,7 +75,7 @@
           <!-- <td> {{ vacina.mediaVacina }} </td> -->
           <td>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button class="btn btn-primary">Editar</button>
+              <button class="btn btn-primary" (click)="editar(p.idPessoa)">Editar</button>
               <button class="btn btn-danger ">Excluir</button>
             </div>
           </td>

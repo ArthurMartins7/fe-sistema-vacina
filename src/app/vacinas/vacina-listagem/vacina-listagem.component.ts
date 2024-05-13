@@ -88,7 +88,7 @@ export class VacinaListagemComponent implements OnInit{
 
       }
 
-      //USADO NO BOTÃO PARA PESQUISAR, ELE UTILIZA A CONSULTA FEITA PELO SELETOR, TENDO TODOS OS FILTROS NO METODO DO BACK-AND.
+      //USADO NO BOTÃO PARA PESQUISAR, ELE UTILIZA A CONSULTA FEITA PELO SELETOR, TENDO TODOS OS FILTROS NO METODO DO BACK-END.
   public pesquisar() {
     this.vacinaService.consultarComSeletor(this.seletor).subscribe(
       (resultado) => {

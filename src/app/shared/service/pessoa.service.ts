@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pessoa } from '../model/pessoa';
+import { PessoaSeletor } from '../model/seletor/pessoa-seletor';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,10 @@ export class PesquisadorService {
 
   public excluir(id: number):Observable<boolean> {
     return this.httpCliente.delete<boolean>(this.API + '/' + id)
+  }
+
+  public consultarComSeletor(seletor: PessoaSeletor):Observable <Array<Pessoa>> {
+    return this.httpCliente.post<Array<Pessoa>>(this.API + '/filtro', seletor)
   }
 
 }
